@@ -6,8 +6,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <malloc.h>
-#include <conio.h>
+// #include <malloc.h>
+// #include <conio.h>
+#include "lib.c"
 
 //**********************
 // FUNCTION PROTOTYPES
@@ -37,8 +38,8 @@ char strpx[5], strpy[5], strpz[5];
 char strcox[5], strcoy[5], strcoz[5];
 char strpackx[5], strpacky[5], strpackz[5];
 
-char filename[12];
-char strtemp[]="";
+char filename[64];
+char strtemp[64];
 char packing;
 char layerdone;
 char evened;
@@ -160,7 +161,7 @@ void initialize(void)
   
   scrapfirst = malloc(sizeof(struct scrappad));
   
-  if ((*scrapfirst).pos == NULL) 
+  if (scrapfirst == NULL)
   {
     printf("Insufficient memory available\n"); 
     exit(1);
@@ -430,7 +431,7 @@ int packlayer(void)
   for(;!quit;)
   {
     if (kbhit()) {
-      if ( toupper(getch()) == 'Q' ) 
+      if ( toupper1(getch()) == 'Q' )
       {
         quit = 1;
         printf("\n\nWait please...\n");
